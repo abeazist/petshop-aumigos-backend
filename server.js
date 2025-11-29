@@ -1,5 +1,14 @@
-import {app} from "./src/app.js";
+import { app } from "../src/app.js";
 
-app.listen({ port: 3000 }, () => {
-  console.log("Servidor rodando em http://localhost:3000");
-});
+const start = async () => {
+  try {
+    const port = process.env.PORT || 3000;
+    await app.listen({ port, host: "0.0.0.0" });
+    console.log(`servidor rodandu ${port}`);
+  } catch (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
+};
+
+start();
