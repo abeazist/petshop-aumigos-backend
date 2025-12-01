@@ -21,6 +21,16 @@ export class UsuarioRepository {
     return result[0];
   }
 
+  async buscarPorEmail(email) {
+    const res = await db
+      .select()
+      .from(usuario)
+      .where(eq(usuario.email, email))
+      .limit(1);
+
+    return res[0] || null;
+  }
+
   async atualizar(id, data) {
     const result = await db
       .update(usuario)
