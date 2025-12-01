@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import cors from "@fastify/cors";
+import fastifyCors from "fastify-cors";
 import fastifyJwt from "@fastify/jwt";
 import "dotenv/config";
 
@@ -16,8 +16,8 @@ const app = Fastify({
 
 // CORS
 
-app.register(cors, {
-  origin: "*"
+app.register(fastifyCors, {
+  origin: "*",
 });
 
 // JWT
@@ -44,4 +44,4 @@ app.get("/", async () => {
   return { status: "Servidor funcionando" };
 });
 
-
+export { app };
