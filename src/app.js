@@ -1,8 +1,8 @@
 import Fastify from "fastify";
-import fastifyCors from "fastify-cors";
 import fastifyJwt from "@fastify/jwt";
 import "dotenv/config";
 
+import cors from "@fastify/cors";
 import { petRoutes } from "./routes/pet.routes.js";
 import { usuarioRoutes } from "./routes/usuario.routes.js";
 
@@ -16,9 +16,12 @@ const app = Fastify({
 
 // CORS
 
-app.register(fastifyCors, {
+
+await app.register(cors, {
   origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 });
+
 
 // JWT
 app.register(fastifyJwt, {
