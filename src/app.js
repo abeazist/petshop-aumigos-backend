@@ -19,7 +19,7 @@ const app = Fastify({
 
 await app.register(cors, {
   origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 });
 
 
