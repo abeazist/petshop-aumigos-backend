@@ -57,10 +57,10 @@ CREATE TABLE "tipoUsuario" (
 CREATE TABLE "usuario" (
 	"idUsuario" serial PRIMARY KEY NOT NULL,
 	"nome" varchar(150) NOT NULL,
+	"cpf" varchar(14) NOT NULL,
 	"telefone" varchar(20),
 	"endereco" varchar(200),
-	"cpf" varchar(14) NOT NULL,
-	"login" varchar(100) NOT NULL,
+	"email" varchar(100) NOT NULL,
 	"senha" varchar(100) NOT NULL,
 	CONSTRAINT "usuario_cpf_unique" UNIQUE("cpf")
 );
