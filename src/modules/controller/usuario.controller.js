@@ -13,12 +13,12 @@ export const UsuarioController = {
     }
   },
 
-  login: async (request, reply) => {
+  email: async (request, reply) => {
   try {
     const { email, senha } = request.body;
 
     // retorna o próprio usuário (já sem senha)
-    const usuario = await service.login(email, senha);
+    const usuario = await service.email(email, senha);
 
     // gerar token JWT
     const token = await reply.jwtSign({

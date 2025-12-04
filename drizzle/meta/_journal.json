@@ -8,6 +8,13 @@
       "when": 1764385548294,
       "tag": "0000_wakeful_celestials",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1764889015045,
+      "tag": "0001_curvy_talkback",
+      "breakpoints": true
     }
   ]
 }

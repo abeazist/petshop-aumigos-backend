@@ -28,11 +28,11 @@ export class UsuarioService {
 
     const novoUsuario = await this.repo.criar({
       nome,
-      email,
-      senha: hash,
+      cpf,
       telefone,
       endereco,
-      cpf
+      email,
+      senha: hash,
     });
 
     delete novoUsuario.senha; // não retornar a senha
@@ -40,7 +40,7 @@ export class UsuarioService {
   }
 
   // LOGIN
-  async login(email, senha) {
+  async email(email, senha) {
     if (!email || !senha) {
       throw new Error("Email e senha são obrigatórios");
     }

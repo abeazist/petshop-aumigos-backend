@@ -6,10 +6,10 @@ import { pgTable, serial, varchar, integer, numeric, date, primaryKey } from "dr
 export const usuario = pgTable("usuario", {
   idUsuario: serial("idUsuario").primaryKey(),
   nome: varchar("nome", { length: 150 }).notNull(),
+  cpf: varchar("cpf", { length: 14 }).notNull().unique(),
   telefone: varchar("telefone", { length: 20 }),
   endereco: varchar("endereco", { length: 200 }),
-  cpf: varchar("cpf", { length: 14 }).notNull().unique(),
-  login: varchar("login", { length: 100 }).notNull(),
+  email: varchar("email", { length: 100 }).notNull(),
   senha: varchar("senha", { length: 100 }).notNull()
 });
 
