@@ -18,12 +18,13 @@ const app = Fastify({
 
 
 await app.register(cors, {
-  // origin: "*",
-  origin: ["http://localhost:5173", "https://petshop-aumigos-backend.onrender.com"],
+  origin: true,
+  // origin: ["http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 
 });
+//  "https://petshop-aumigos-backend.onrender.com"
 
 
 // JWT
