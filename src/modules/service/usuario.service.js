@@ -75,7 +75,7 @@ export class UsuarioService {
   }
 
 
-  // ATUALIZAR USUÁRIO
+  // ATUALIZAR/EDITAR USUÁRIO
   async atualizar(id, data) {
     // se for atualizar a senha, criptografa de novo
     if (data.senha) {
