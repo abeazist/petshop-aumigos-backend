@@ -18,7 +18,8 @@ const app = Fastify({
 
 
 await app.register(cors, {
-  origin: true,
+  // origin: true,
+  origin: "*",
   // origin: ["http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
