@@ -156,5 +156,17 @@ export const itemServico = pgTable("itemServico",
       columns: [table.idPet],
       foreignColumns: [pet.idPet],
     }
-  })
-);
+  }));
+
+
+
+  
+export const agendamentos = pgTable("agendamentos", {
+  id: serial("id").primaryKey(),
+  nomePet: varchar("nomePet").notNull(),
+  simpatinhas: varchar("simpatinhas"),
+  cpfTutor: varchar("cpfTutor").notNull(),
+  telefone: varchar("telefone").notNull(),
+  servico: varchar("servico").notNull(),
+  dataAgendamento: date("dataAgendamento").notNull(),
+});
