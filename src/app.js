@@ -19,7 +19,7 @@ const app = Fastify({
 
 await app.register(cors, {
   // origin: "*",
-  origin: ["http://localhost:5173", "https://petshop-aumigos-frontend.onrender.com"],
+  origin: ["http://localhost:5173", "https://petshop-aumigos-backend.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 
