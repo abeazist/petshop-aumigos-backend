@@ -78,8 +78,10 @@ export class UsuarioService {
   // ATUALIZAR/EDITAR USUÁRIO
   async atualizar(id, data) {
     // se for atualizar a senha, criptografa de novo
-    if (data.senha) {
+    if (data.senha && data.senha.trim() !== "") {
       data.senha = await bcrypt.hash(data.senha, 10);
+    } else {
+      delete data.senha;
     }
 
     const userAtualizado = await this.repo.atualizar(id, data);
