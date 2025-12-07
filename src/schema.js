@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar, integer, numeric, date, primaryKey } from "drizzle-orm/pg-core";
+import { pgTable, serial, varchar, integer, numeric, date, primaryKey, text } from "drizzle-orm/pg-core";
 
 //
 // USUÁRIO
@@ -10,7 +10,8 @@ export const usuario = pgTable("usuario", {
   telefone: varchar("telefone", { length: 20 }),
   endereco: varchar("endereco", { length: 200 }),
   email: varchar("email", { length: 100 }).notNull(),
-  senha: varchar("senha", { length: 100 }).notNull()
+  senha: varchar("senha", { length: 100 }).notNull(),
+  fotoTutor: text("fotoTutor"),
 });
 
 //
@@ -55,6 +56,7 @@ export const pet = pgTable("pet", {
   nome: varchar("nome", { length: 150 }).notNull(),
   dataNascimento: date("dataNascimento"),
   sinpatinhas: varchar("sinpatinhas", { length: 255 }),
+  fotoPet: text("fotoPet"),
   idUsuario: integer("idUsuario").notNull(),
 
 }, (table) => ({
