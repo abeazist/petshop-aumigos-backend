@@ -1,15 +1,23 @@
 import { db } from "../../db.js";
-import { agendamentos } from "../../schema.js";
+import { agendamento } from "../../schema.js";
+import { eq } from "drizzle-orm";
 
-export async function criarAgendamentoRepo(dados) {
-  const novo = await db.insert(agendamentos).values(dados).returning();
-  return novo[0];
-}
+export const AgendamentoRepository = {
+  listar: async () => {
+    return await db.select().from(agendamento);
+  },
 
-export async function listarAgendamentosRepo() {
-  return await db.select().from(agendamentos);
-}
+  buscarPorId: async (id) => {
+    const result = await db.select().from(agendamento).where(eq(agendamento.idAgendamento, id));
+    return result[0];
+  },
 
-export async function deletarAgendamentoRepo(id) {
-  await db.delete(agendamentos).where(agendamentos.id.eq(id));
-}
+  criar: async (data) => {
+    const result = await db.insert(agendamento).values(data).returning();
+    return result[0];
+  },
+
+  deletar: async (id) => {
+    await db.delete(agendamento).where(eq(agendamento.idAgendamento, id));
+  }
+};

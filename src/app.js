@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import fastifyJwt from "@fastify/jwt";
 import "dotenv/config";
+import { agendamentoRoutes } from "./routes/agendamento.routes.js";
 
 import cors from "@fastify/cors";
 import { petRoutes } from "./routes/pet.routes.js";
@@ -52,4 +53,15 @@ app.get("/", async () => {
   return { status: "Servidor funcionando" };
 });
 
+
+
+
+
 export { app };
+export async function app() {
+  const fastify = Fastify();
+
+  fastify.register(agendamentoRoutes, { prefix: "/api" });
+
+  return fastify;
+}

@@ -1,14 +1,8 @@
-import { Router } from "express";
-import {
-  criarAgendamentoController,
-  listarAgendamentosController,
-  deletarAgendamentoController,
-} from "../modules/controller/agendamento.controller.js";
+import { AgendamentoController } from "../modules/controller/agendamento.controller.js";
 
-const router = Router();
-
-router.post("/", criarAgendamentoController);
-router.get("/", listarAgendamentosController);
-router.delete("/:id", deletarAgendamentoController);
-
-export default router;
+export async function agendamentoRoutes(app) {
+  app.get("/agendamentos", AgendamentoController.listar);
+  app.get("/agendamentos/:id", AgendamentoController.buscarPorId);
+  app.post("/agendamentos", AgendamentoController.criar);
+  app.delete("/agendamentos/:id", AgendamentoController.deletar);
+}

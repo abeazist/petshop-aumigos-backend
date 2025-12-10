@@ -162,13 +162,12 @@ export const itemServico = pgTable("itemServico",
 
 
 
-  
-export const agendamentos = pgTable("agendamentos", {
-  id: serial("id").primaryKey(),
-  nomePet: varchar("nomePet").notNull(),
-  simpatinhas: varchar("simpatinhas"),
-  cpfTutor: varchar("cpfTutor").notNull(),
-  telefone: varchar("telefone").notNull(),
-  servico: varchar("servico").notNull(),
+export const agendamento = pgTable("agendamento", {
+  idAgendamento: serial("idAgendamento").primaryKey(),
+  nomePet: varchar("nomePet", { length: 150 }).notNull(),
+  simpatinhas: varchar("simpatinhas", { length: 255 }),
+  cpfTutor: varchar("cpfTutor", { length: 20 }),
+  telefone: varchar("telefone", { length: 20 }),
+  servico: varchar("servico", { length: 150 }),
   dataAgendamento: date("dataAgendamento").notNull(),
 });

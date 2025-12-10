@@ -1,21 +1,24 @@
-import {
-  criarAgendamentoRepo,
-  listarAgendamentosRepo,
-  deletarAgendamentoRepo,
-} from "../repository/agendamento.repository.js";
+import { AgendamentoRepository } from "../repository/agendamento.repository.js";
 
-export async function criarAgendamentoService(dados) {
-  if (!dados.nomePet || !dados.cpfTutor || !dados.telefone || !dados.servico || !dados.dataAgendamento) {
-    throw new Error("Dados incompletos");
+class AgendamentoServiceClass {
+  
+  async listar() {
+    return await AgendamentoRepository.listar();
   }
 
-  return await criarAgendamentoRepo(dados);
+  async buscarPorId(id) {
+    const ag = await AgendamentoRepository.buscarPorId(id);
+    if (!ag) throw new Error("Agendamento não encontrado");
+    return ag;
+  }
+
+  async criar(data) {
+    return await AgendamentoRepository.criar(data);
+  }
+
+  async deletar(id) {
+    return await AgendamentoRepository.deletar(id);
+  }
 }
 
-export async function listarAgendamentosService() {
-  return await listarAgendamentosRepo();
-}
-
-export async function deletarAgendamentoService(id) {
-  return await deletarAgendamentoRepo(id);
-}
+export const AgendamentoService = new AgendamentoServiceClass();
