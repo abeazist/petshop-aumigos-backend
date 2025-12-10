@@ -2,7 +2,7 @@ import { UsuarioController } from "../modules/controller/usuario.controller.js";
 
 export async function usuarioRoutes(app) {
   app.post("/usuario", UsuarioController.criar); // cadastro
-  app.post("/email", UsuarioController.email);    // login
+  app.post("/login", UsuarioController.login);
 
   // Somente usuários autenticados
   app.get("/usuario/perfilAtual", { preValidation: [app.authenticate] }, UsuarioController.perfilAtual);

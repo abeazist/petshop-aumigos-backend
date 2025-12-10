@@ -39,25 +39,25 @@ export class UsuarioService {
     return novoUsuario;
   }
 
-  // LOGIN
-  async email(email, senha) {
-    if (!email || !senha) {
-      throw new Error("Email e senha são obrigatórios");
-    }
-
-    const usuario = await this.repo.buscarPorEmail(email);
-    if (!usuario) {
-      throw new Error("Credenciais inválidas");
-    }
-
-    const match = await bcrypt.compare(senha, usuario.senha);
-    if (!match) {
-      throw new Error("Credenciais inválidas");
-    }
-
-    delete usuario.senha;
-    return usuario;
+  //login
+  async login(email, senha) {
+  if (!email || !senha) {
+    throw new Error("Email e senha são obrigatórios");
   }
+
+  const usuario = await this.repo.buscarPorEmail(email);
+  if (!usuario) {
+    throw new Error("Credenciais inválidas");
+  }
+
+  const match = await bcrypt.compare(senha, usuario.senha);
+  if (!match) {
+    throw new Error("Credenciais inválidas");
+  }
+
+  delete usuario.senha; 
+  return usuario;
+}
 
 
   // LISTAR USUÁRIOS
